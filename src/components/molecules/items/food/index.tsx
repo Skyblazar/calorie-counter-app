@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { IFood } from "../../../../services";
-import { Button, FlatButton } from "../../../atoms";
+import { FlatButton, OutlineButton } from "../../../atoms";
 
 interface TProps {
   food: IFood;
@@ -44,9 +44,10 @@ const Wrapper = styled.li`
 
   div.actions {
     justify-content: flex-end;
+    margin-top: 1em;
 
-    ${Button} {
-      margin-left: 1em;
+    ${FlatButton} {
+      margin-right: 1em;
     }
   }
 `;
@@ -64,7 +65,7 @@ export const FoodItem = ({ food }: TProps) => {
 
       <div className="actions">
         <FlatButton>More</FlatButton>
-        <Button>Add</Button>
+        <OutlineButton>Add</OutlineButton>
       </div>
     </Wrapper>
   );

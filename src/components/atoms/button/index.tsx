@@ -8,6 +8,12 @@ const commonStyle = css`
   outline: none;
   transition: all 0.3s ease 0s;
   border-radius: 100px;
+  min-width: 100px;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
 `;
 
 export const Button = styled.button`
@@ -38,6 +44,18 @@ export const FlatButton = styled.button`
   background-color: #f7f7f7;
 
   &:hover {
-    background-color: #f1f0f0;
+    background-color: #dedede;
+  }
+`;
+
+export const OutlineButton = styled.button`
+  ${commonStyle};
+
+  border: 1px solid #f1f0f0;
+  background-color: #fff;
+
+  &:hover {
+    background-color: ${(props) => props.theme.color.button};
+    color: #fff;
   }
 `;
