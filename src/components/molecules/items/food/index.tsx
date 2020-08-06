@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { IFood } from "../../../../services";
-import { Button } from "../../../atoms";
+import { Button, FlatButton } from "../../../atoms";
 
 interface TProps {
   food: IFood;
@@ -63,7 +63,7 @@ export const FoodItem = ({ food }: TProps) => {
       </div>
 
       <div className="actions">
-        <Button>More</Button>
+        <FlatButton>More</FlatButton>
         <Button>Add</Button>
       </div>
     </Wrapper>

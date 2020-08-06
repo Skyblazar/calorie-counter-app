@@ -1,18 +1,23 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Button = styled.button`
-  cursor: pointer;
+const commonStyle = css`
   padding: 1em 1.3em;
-  min-width: 140px;
+  cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
-  border: none;
   outline: none;
+  transition: all 0.3s ease 0s;
+  border-radius: 100px;
+`;
+
+export const Button = styled.button`
+  ${commonStyle};
+
+  min-width: 140px;
+  border: none;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   margin-top: 7px;
   background-color: #fff;
-  transition: all 0.3s ease 0s;
-  border-radius: 100px;
 
   &:hover {
     background-color: ${(props) => props.theme.color.button};
@@ -23,5 +28,16 @@ export const Button = styled.button`
 
   &:active {
     opacity: 0.7;
+  }
+`;
+
+export const FlatButton = styled.button`
+  ${commonStyle};
+
+  border: none;
+  background-color: #f7f7f7;
+
+  &:hover {
+    background-color: #f1f0f0;
   }
 `;
