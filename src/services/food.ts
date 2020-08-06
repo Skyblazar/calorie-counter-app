@@ -26,9 +26,14 @@ export interface IFood {
   saturatedFats: number;
 }
 
+interface ResponsePayload {
+  statusCode: number;
+  data: IFood[];
+}
+
 class FoodService {
   async search(query: string) {
-    return axios.get<any, AxiosResponse<IFood[]>>(`/foods/${query}`);
+    return axios.get<any, AxiosResponse<ResponsePayload>>(`/foods/${query}`);
   }
 }
 
