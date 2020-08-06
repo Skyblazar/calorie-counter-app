@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
+      min-height: 100vh;
+      background-color: #e9f1ed;
   }
 
   * { 
