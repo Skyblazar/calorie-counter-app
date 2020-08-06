@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 export interface IFood {
+  _id: string;
   foodCode: number;
   displayName: string;
   portionDefault: number;
