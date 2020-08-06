@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { IFood } from "../../../../services";
+import { FoodItem } from "../../../molecules";
 
 interface TProps {
   foods: IFood[];
@@ -11,6 +12,7 @@ const Wrapper = styled.ul`
   max-width: 600px;
   margin: auto;
   list-style: none;
+  margin-bottom: 2em;
 `;
 
 export const FoodList = ({ foods }: TProps) => {
@@ -19,7 +21,7 @@ export const FoodList = ({ foods }: TProps) => {
   return (
     <Wrapper>
       {foods.map((food) => {
-        return <li key={food._id}>{food.displayName}</li>;
+        return <FoodItem key={food._id} food={food} />;
       })}
     </Wrapper>
   );

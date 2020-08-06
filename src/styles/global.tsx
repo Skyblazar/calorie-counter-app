@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   body{ 
       margin: 0;
-      padding: 0;
+      padding: 0 1em;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
