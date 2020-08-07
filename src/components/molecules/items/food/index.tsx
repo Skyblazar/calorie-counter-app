@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import styled from "styled-components";
 
 import { IFood } from "../../../../services";
@@ -53,20 +53,41 @@ const Wrapper = styled.li`
 `;
 
 export const FoodItem = ({ food }: TProps) => {
+  const [adding, setAdding] = useState(false);
+  const toggleAdding = () => {
+    setAdding(!adding);
+  };
+  const addFood = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    food.quantity = 1;
+    setAdding(false);
+  };
+
   if (!food) return null;
 
   return (
     <Wrapper>
-      <h3>{food.displayName}</h3>
-      <div className="info">
-        <p>{`${food.portionAmount} ${food.portionDisplayName}`}</p>
-        <h5>{food.calories} calories</h5>
-      </div>
+      <span>
+        <h3>{food.displayName}</h3>
+        <div className="info">
+          <p>{`${food.portionAmount} ${food.portionDisplayName}`}</p>
+          <h5>{food.calories} calories</h5>
+        </div>
 
-      <div className="actions">
-        <FlatButton>More</FlatButton>
-        <OutlineButton>Add</OutlineButton>
-      </div>
+        {!adding && (
+          <div className="actions">
+            <FlatButton>More</FlatButton>
+            <OutlineButton onClick={toggleAdding}>Add</OutlineButton>
+          </div>
+        )}
+
+        {adding && (
+          <form onSubmit={addFood}>
+            <input type="number" placeholder="Quantity" />
+            <OutlineButton type="submit">Done</OutlineButton>
+          </form>
+        )}
+      </span>
     </Wrapper>
   );
 };

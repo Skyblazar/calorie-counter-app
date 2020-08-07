@@ -26,6 +26,7 @@ export interface IFood {
   calories: number;
   saturatedFats: number;
   added: boolean;
+  quantity: number;
 }
 
 interface ResponsePayload {
