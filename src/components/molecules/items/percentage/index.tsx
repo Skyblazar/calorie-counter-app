@@ -26,7 +26,9 @@ export const PercentageItem = ({ percentage }: TProps) => {
     <Wrapper>
       <p>
         <span className="name">{percentage.name}: </span>{" "}
-        <span className="value">{percentage.value.toPrecision(2)}%</span>
+        <span className="value">
+          {Math.round(percentage.value * 100) / 100}%
+        </span>
       </p>
     </Wrapper>
   );

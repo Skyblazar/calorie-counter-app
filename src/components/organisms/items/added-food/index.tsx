@@ -36,7 +36,7 @@ export const AddedFoodItem = ({ food }: TProps) => {
         </p>
       </div>
       <div className="calories">
-        <p>{(food.calories * food.quantity).toFixed(2)} kcal</p>
+        <p>{Math.round(food.calories * food.quantity * 100) / 100} kcal</p>
       </div>
     </Wrapper>
   );
