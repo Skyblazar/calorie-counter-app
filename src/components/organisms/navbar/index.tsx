@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button } from "../../atoms";
@@ -15,12 +16,19 @@ const Wrapper = styled.nav`
 `;
 
 export const Navbar = () => {
+  const history = useHistory();
   const totalCalories = useStore((state) => state.totalCalories);
+
+  const navigateToCount = () => {
+    history.push("/count");
+  };
 
   return (
     <Wrapper>
       <h1>Calorie Counter</h1>
-      {totalCalories > 0 && <Button>Calculate</Button>}
+      {totalCalories > 0 && (
+        <Button onClick={navigateToCount}>Calculate</Button>
+      )}
     </Wrapper>
   );
 };
