@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 import { ThemeProvider } from "styled-components";
 
 import "./index.css";
 import { App } from "./App";
 import { GlobalStyle, theme } from "./styles";
 import * as serviceWorker from "./serviceWorker";
+
+if (process.env.NODE_ENV === "production")
+  axios.defaults.baseURL = "https://caloric-bk.herokuapp.com";
 
 ReactDOM.render(
   <React.StrictMode>
