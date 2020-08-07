@@ -110,7 +110,7 @@ export const FoodItem = ({ food }: TProps) => {
 
         <div className="info">
           <p>{`${food.portionAmount} ${food.portionDisplayName}`}</p>
-          <h5>{food.calories} calories</h5>
+          <h5>{food.calories} kcal</h5>
         </div>
 
         {!adding && (

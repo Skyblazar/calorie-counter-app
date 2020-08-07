@@ -1,33 +1,14 @@
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import { SearchForm, FoodList, Navbar } from "./components/organisms";
-import { IFood, foodService } from "./services";
+import { Navbar } from "./components/organisms";
+import { HomePage } from "./components/pages";
 
 export const App = () => {
-  const [foods, setFoods] = useState<IFood[]>([]);
-  const [food, setFood] = useState("");
-
-  const updateFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setFood(e.target.value);
-  };
-
-  const searchFoods = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    foodService
-      .search(food)
-      .then((res) => {
-        setFoods(res.data.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   return (
-    <div className="App">
+    <Router>
       <Navbar />
-      <SearchForm searchFoods={searchFoods} updateFood={updateFood} />
-      <FoodList foods={foods} />
-    </div>
+      <Route path="/" component={HomePage} />
+    </Router>
   );
 };
