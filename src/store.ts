@@ -21,19 +21,19 @@ export const [useStore, api] = create<AppState>((set, get) => {
         const calories: number = get().totalCalories;
         const foods: IFood[] = get().addedFoods;
         set({
-          totalCalories: calories + food.calories,
+          totalCalories: calories + food.calories * food.quantity,
           addedFoods: [...foods, food],
         });
       },
       removeFood: (food) => {
         food.added = false;
-        food.quantity = 0;
         const calories: number = get().totalCalories;
         const foods: IFood[] = get().addedFoods;
         set({
-          totalCalories: calories - food.calories,
+          totalCalories: calories - food.calories * food.quantity,
           addedFoods: foods.filter((cFood) => cFood._id !== food._id),
         });
+        food.quantity = 0;
       },
     },
   };

@@ -32,7 +32,6 @@ export const getPercentages = (foods: IFood[]) => {
     solidFats: 0,
     addedSugars: 0,
     alcohol: 0,
-    calories: 0,
     saturatedFats: 0,
   };
 
