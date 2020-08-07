@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useStore } from "../../../../store";
 import { IFood } from "../../../../services";
 import { FlatButton, OutlineButton } from "../../../atoms";
-import { QuantityForm } from "../../../organisms";
+import { QuantityForm } from "../..";
 
 interface TProps {
   food: IFood;

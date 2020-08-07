@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { IFood } from "../../../../services";
-import { FoodItem } from "../../../molecules";
+import { FoodItem } from "../../";
 
 interface TProps {
   foods: IFood[];
