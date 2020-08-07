@@ -1,6 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import styled from "styled-components";
 
+import { useStore } from "../../../../store";
 import { IFood } from "../../../../services";
 import { FlatButton, OutlineButton } from "../../../atoms";
 import { QuantityForm } from "../../../organisms";
@@ -29,16 +30,30 @@ const Wrapper = styled.li`
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
   }
 
+  button.close {
+    min-width: 0;
+    padding: 1em;
+    background-color: #a70000;
+    color: #fff;
+    margin-bottom: 0.3em;
+
+    &:hover {
+      background-color: #610000;
+    }
+  }
+
   p {
     color: #9a9a9a;
     margin: 0.3em 0;
   }
 
-  div {
+  div,
+  header {
     display: flex;
     align-items: center;
   }
 
+  header,
   div.info {
     justify-content: space-between;
   }
@@ -54,6 +69,8 @@ const Wrapper = styled.li`
 `;
 
 export const FoodItem = ({ food }: TProps) => {
+  const { addFood, removeFood } = useStore((state) => state.actions);
+
   const [adding, setAdding] = useState(false);
   const [quantity, setQuantity] = useState(0);
 
@@ -61,14 +78,20 @@ export const FoodItem = ({ food }: TProps) => {
     setAdding(!adding);
   };
 
-  const addFood = (e: FormEvent<HTMLFormElement>) => {
+  const add = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    food.quantity = quantity;
+    addFood(food, quantity);
     setAdding(false);
   };
 
+  const remove = () => {
+    removeFood(food);
+    setQuantity(0);
+  };
+
   const updateQuantity = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuantity(+(e.target.value || 0));
+    const value = +(e.target.value || 0);
+    setQuantity(value > 0 ? value : 0);
   };
 
   if (!food) return null;
@@ -76,7 +99,15 @@ export const FoodItem = ({ food }: TProps) => {
   return (
     <Wrapper>
       <span>
-        <h3>{food.displayName}</h3>
+        <header>
+          <h3>{food.displayName}</h3>
+          {food.quantity > 0 && (
+            <FlatButton className="close" onClick={remove}>
+              Remove
+            </FlatButton>
+          )}
+        </header>
+
         <div className="info">
           <p>{`${food.portionAmount} ${food.portionDisplayName}`}</p>
           <h5>{food.calories} calories</h5>
@@ -85,12 +116,15 @@ export const FoodItem = ({ food }: TProps) => {
         {!adding && (
           <div className="actions">
             <FlatButton>More</FlatButton>
-            <OutlineButton onClick={toggleAdding}>Add</OutlineButton>
+            <OutlineButton onClick={toggleAdding}>
+              <span>Add</span>
+              {food.quantity > 0 && <span>: {food.quantity}</span>}
+            </OutlineButton>
           </div>
         )}
 
         {adding && (
-          <QuantityForm addFood={addFood} updateQuantity={updateQuantity} />
+          <QuantityForm addFood={add} updateQuantity={updateQuantity} />
         )}
       </span>
     </Wrapper>

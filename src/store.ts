@@ -1,13 +1,23 @@
 import create from "zustand";
 import { IFood } from "./services";
 
-export const [useStore, api] = create((set, get) => {
+interface AppState {
+  addedFoods: IFood[];
+  totalCalories: number;
+  actions: {
+    addFood: (food: IFood, quantity: number) => void;
+    removeFood: (food: IFood) => void;
+  };
+}
+
+export const [useStore, api] = create<AppState>((set, get) => {
   return {
     addedFoods: [] as IFood[],
     totalCalories: 0,
     actions: {
-      addFood: (food: IFood) => {
+      addFood: (food, quantity) => {
         food.added = true;
+        food.quantity = quantity;
         const calories: number = get().totalCalories;
         const foods: IFood[] = get().addedFoods;
         set({
@@ -15,8 +25,9 @@ export const [useStore, api] = create((set, get) => {
           addedFoods: [...foods, food],
         });
       },
-      removeFood: (food: IFood) => {
+      removeFood: (food) => {
         food.added = false;
+        food.quantity = 0;
         const calories: number = get().totalCalories;
         const foods: IFood[] = get().addedFoods;
         set({
