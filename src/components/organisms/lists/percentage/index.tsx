@@ -13,6 +13,7 @@ const Wrapper = styled.ul`
   margin: 2em;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const PercentageList = ({ percentages }: TProps) => {
@@ -21,7 +22,7 @@ export const PercentageList = ({ percentages }: TProps) => {
   return (
     <Wrapper>
       {percentages.map((percentage) => {
-        return <PercentageItem percentage={percentage} />;
+        return <PercentageItem key={percentage.name} percentage={percentage} />;
       })}
     </Wrapper>
   );
