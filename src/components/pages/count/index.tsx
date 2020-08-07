@@ -1,9 +1,11 @@
 import React from "react";
 
+import { CalorieBox } from "../../organisms";
+
 export const CountPage = () => {
   return (
     <div>
-      <h1>Count</h1>
+      <CalorieBox calories={1000} />
     </div>
   );
 };
