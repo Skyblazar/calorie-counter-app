@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import { IFood } from "../../../../services";
 import { FoodItem } from "../../";
+import { IFood } from "../../../../interfaces";
+import { AddedFoodItem } from "../../items";
 
 interface TProps {
   foods: IFood[];
+  isAdded?: boolean;
 }
 
 const Wrapper = styled.ul`
@@ -15,8 +17,18 @@ const Wrapper = styled.ul`
   margin-bottom: 2em;
 `;
 
-export const FoodList = ({ foods }: TProps) => {
+export const FoodList = ({ foods, isAdded = false }: TProps) => {
   if (!foods || foods.length === 0) return null;
+
+  if (isAdded) {
+    return (
+      <Wrapper>
+        {foods.map((food) => {
+          return <AddedFoodItem key={food._id} food={food} />;
+        })}
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper>

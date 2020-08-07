@@ -1,1 +1,1 @@
-export type { IPercentage } from "./food";
+export type { IPercentage, IFood } from "./food";

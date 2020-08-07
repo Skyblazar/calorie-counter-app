@@ -1,5 +1,5 @@
 import create from "zustand";
-import { IFood } from "./services";
+import { IFood } from "./interfaces";
 
 interface AppState {
   addedFoods: IFood[];

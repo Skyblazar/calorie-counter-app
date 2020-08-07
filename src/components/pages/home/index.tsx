@@ -1,7 +1,8 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 
 import { SearchForm, FoodList } from "../../organisms";
-import { IFood, foodService } from "../../../services";
+import { foodService } from "../../../services";
+import { IFood } from "../../../interfaces";
 
 export const HomePage = () => {
   const [foods, setFoods] = useState<IFood[]>([]);

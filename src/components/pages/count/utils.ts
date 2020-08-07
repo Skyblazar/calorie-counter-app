@@ -1,5 +1,4 @@
-import { IFood } from "../../../services";
-import { IPercentage } from "../../../interfaces";
+import { IPercentage, IFood } from "../../../interfaces";
 
 export const keyToName = (key: string) => {
   let str = key[0].toUpperCase();
