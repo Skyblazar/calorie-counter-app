@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+import { PercentageList } from "../lists";
+import { IPercentage } from "../../../interfaces";
+
 interface TProps {
   calories: number;
+  percentages: IPercentage[];
 }
 
 const Wrapper = styled.div`
@@ -25,12 +29,14 @@ const Wrapper = styled.div`
   }
 `;
 
-export const CalorieBox = ({ calories }: TProps) => {
+export const CalorieBox = ({ calories, percentages }: TProps) => {
   return (
     <Wrapper>
       <h1>
         {calories} <small>kcal</small>
       </h1>
+
+      <PercentageList percentages={percentages} />
     </Wrapper>
   );
 };
