@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 
-import { SearchForm, FoodList } from "./components/organisms";
+import { SearchForm, FoodList, Navbar } from "./components/organisms";
 import { IFood, foodService } from "./services";
 
 export const App = () => {
@@ -25,7 +25,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <h1>App</h1>
+      <Navbar />
       <SearchForm searchFoods={searchFoods} updateFood={updateFood} />
       <FoodList foods={foods} />
     </div>
