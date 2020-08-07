@@ -1,2 +1,2 @@
 export { Button, FlatButton, OutlineButton } from "./button";
-export { Input } from "./input";
+export { Input, OutlineInput } from "./input";

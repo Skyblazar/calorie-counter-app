@@ -1,7 +1,7 @@
 import React, { FormEvent, ChangeEvent } from "react";
 import styled from "styled-components";
 
-import { OutlineButton } from "../../../atoms";
+import { OutlineButton, OutlineInput } from "../../../atoms";
 
 interface TProps {
   updateQuantity: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -9,8 +9,8 @@ interface TProps {
 }
 
 const Wrapper = styled.form`
-  padding: 0 1em;
-  text-align: center;
+  margin-top: 1em;
+  text-align: end;
 
   input {
     margin: 0 1em;
@@ -20,7 +20,11 @@ const Wrapper = styled.form`
 export const QuantityForm = ({ updateQuantity, addFood }: TProps) => {
   return (
     <Wrapper onSubmit={addFood}>
-      <input type="number" placeholder="Quantity" onChange={updateQuantity} />
+      <OutlineInput
+        type="number"
+        placeholder="Quantity"
+        onChange={updateQuantity}
+      />
       <OutlineButton type="submit">Done</OutlineButton>
     </Wrapper>
   );
