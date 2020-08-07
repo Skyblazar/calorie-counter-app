@@ -1,8 +1,9 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import styled from "styled-components";
 
 import { IFood } from "../../../../services";
 import { FlatButton, OutlineButton } from "../../../atoms";
+import { QuantityForm } from "../../../organisms";
 
 interface TProps {
   food: IFood;
@@ -54,13 +55,20 @@ const Wrapper = styled.li`
 
 export const FoodItem = ({ food }: TProps) => {
   const [adding, setAdding] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+
   const toggleAdding = () => {
     setAdding(!adding);
   };
+
   const addFood = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    food.quantity = 1;
+    food.quantity = quantity;
     setAdding(false);
+  };
+
+  const updateQuantity = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuantity(+(e.target.value || 0));
   };
 
   if (!food) return null;
@@ -82,10 +90,7 @@ export const FoodItem = ({ food }: TProps) => {
         )}
 
         {adding && (
-          <form onSubmit={addFood}>
-            <input type="number" placeholder="Quantity" />
-            <OutlineButton type="submit">Done</OutlineButton>
-          </form>
+          <QuantityForm addFood={addFood} updateQuantity={updateQuantity} />
         )}
       </span>
     </Wrapper>
