@@ -21,8 +21,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  font-size: 3em;
   margin: 1em auto;
+
+  h1 {
+    font-size: 7em;
+  }
 
   small {
     color: #969696;

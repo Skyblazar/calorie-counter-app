@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 import { IPercentage } from "../../../../interfaces";
+import { PercentageItem } from "../../../molecules";
 
 interface TProps {
   percentages: IPercentage[];
 }
 
 const Wrapper = styled.ul`
-  max-width: 600px;
-  margin: auto;
   list-style: none;
-  margin-bottom: 2em;
+  margin: 2em;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 export const PercentageList = ({ percentages }: TProps) => {
@@ -20,11 +21,7 @@ export const PercentageList = ({ percentages }: TProps) => {
   return (
     <Wrapper>
       {percentages.map((percentage) => {
-        return (
-          <li>
-            <span>{percentage.name}: </span> <span>{percentage.value} %</span>
-          </li>
-        );
+        return <PercentageItem percentage={percentage} />;
       })}
     </Wrapper>
   );
