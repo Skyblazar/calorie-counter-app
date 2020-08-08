@@ -9,7 +9,7 @@ interface TProps {
 const Wrapper = styled.li`
   p {
     color: #333;
-    margin: 0 1em;
+    margin: 0.3em;
   }
 
   span.name {

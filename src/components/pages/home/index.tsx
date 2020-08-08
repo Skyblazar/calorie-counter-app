@@ -3,6 +3,7 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 import { SearchForm, FoodList } from "../../organisms";
 import { foodService } from "../../../services";
 import { IFood } from "../../../interfaces";
+import { PageTemplate } from "../../templates";
 
 export const HomePage = () => {
   const [foods, setFoods] = useState<IFood[]>([]);
@@ -32,13 +33,13 @@ export const HomePage = () => {
   };
 
   return (
-    <div>
+    <PageTemplate showActions={true}>
       <SearchForm
         searchFoods={searchFoods}
         updateFood={updateFood}
         loading={loading}
       />
       <FoodList foods={foods} />
-    </div>
+    </PageTemplate>
   );
 };
