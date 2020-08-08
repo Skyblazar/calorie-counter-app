@@ -6,6 +6,7 @@ import { Input, Button } from "../../../atoms";
 interface TProps {
   updateFood: (e: ChangeEvent<HTMLInputElement>) => void;
   searchFoods: (e: FormEvent<HTMLFormElement>) => void;
+  loading: boolean;
 }
 
 const Wrapper = styled.form`
@@ -17,11 +18,13 @@ const Wrapper = styled.form`
   }
 `;
 
-export const SearchForm = ({ updateFood, searchFoods }: TProps) => {
+export const SearchForm = ({ updateFood, searchFoods, loading }: TProps) => {
   return (
     <Wrapper onSubmit={searchFoods}>
       <Input placeholder="Search Food" onChange={updateFood} />
-      <Button type="submit">Search</Button>
+      <Button type="submit" loading={loading} disabled={loading}>
+        Search
+      </Button>
     </Wrapper>
   );
 };

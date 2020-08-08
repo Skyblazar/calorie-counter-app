@@ -1,4 +1,8 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+interface TProps {
+  loading?: boolean;
+}
 
 const commonStyle = css`
   padding: 1em 1.3em;
@@ -16,7 +20,25 @@ const commonStyle = css`
   }
 `;
 
-export const Button = styled.button`
+const loadingKeyframes = keyframes`
+  0% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0.3
+  }
+
+  100% {
+    opacity: 1
+  }
+`;
+
+const loadingStyle = css`
+  animation: ${loadingKeyframes} 1s infinite linear;
+`;
+
+export const Button = styled.button<TProps>`
   ${commonStyle};
 
   min-width: 140px;
@@ -24,6 +46,8 @@ export const Button = styled.button`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   margin-top: 7px;
   background-color: #fff;
+
+  ${(props) => props.loading && loadingStyle};
 
   &:hover {
     background-color: ${(props) => props.theme.color.button};
