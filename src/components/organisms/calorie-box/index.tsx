@@ -25,6 +25,7 @@ const Wrapper = styled.div`
 
   h1 {
     font-size: 7em;
+    text-align: center;
   }
 
   small {

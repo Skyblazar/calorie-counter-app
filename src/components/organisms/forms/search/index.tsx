@@ -14,7 +14,7 @@ const Wrapper = styled.form`
   text-align: center;
 
   ${Input} {
-    margin: 0 1em;
+    margin: 0 1em 1em 1em;
   }
 `;
 

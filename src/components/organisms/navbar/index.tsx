@@ -11,8 +11,8 @@ interface TProps {
 
 const Wrapper = styled.nav`
   max-width: 1300px;
-  margin: 2em auto;
-  padding: 0 1em;
+  margin: 0 auto 2em auto;
+  padding: 2em;
   color: #333533;
   display: flex;
   align-items: center;
