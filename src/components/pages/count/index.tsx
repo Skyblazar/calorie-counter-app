@@ -15,7 +15,7 @@ export const CountPage = () => {
   return (
     <PageTemplate>
       <CalorieBox
-        calories={totalCalories}
+        calories={Math.round(totalCalories * 100) / 100}
         percentages={getPercentages(addedFoods)}
       />
 
