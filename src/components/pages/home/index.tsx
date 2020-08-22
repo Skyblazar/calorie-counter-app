@@ -6,7 +6,7 @@ import { IFood } from "../../../interfaces";
 import { PageTemplate } from "../../templates";
 
 export const HomePage = () => {
-  const [foods, setFoods] = useState<IFood[]>([]);
+  const [foods, setFoods] = useState<IFood[] | null>(null);
   const [food, setFood] = useState("");
   const [loading, setLoading] = useState(false);
 

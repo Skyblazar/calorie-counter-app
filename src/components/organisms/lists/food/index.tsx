@@ -6,7 +6,7 @@ import { IFood } from "../../../../interfaces";
 import { AddedFoodItem } from "../../items";
 
 interface TProps {
-  foods: IFood[];
+  foods: IFood[] | null;
   isAdded?: boolean;
   heading?: string;
 }
@@ -25,7 +25,19 @@ const Wrapper = styled.ul`
 `;
 
 export const FoodList = ({ foods, heading, isAdded = false }: TProps) => {
-  if (!foods || foods.length === 0) return null;
+  if (!foods) return null;
+
+  if (foods.length === 0)
+    return (
+      <Wrapper>
+        <div style={{ textAlign: "center" }}>
+          <h3>No Food found matching that search term</h3>
+          <small>
+            Try typing <strong>apple</strong> or <strong>beef</strong>
+          </small>
+        </div>
+      </Wrapper>
+    );
 
   if (isAdded) {
     return (
