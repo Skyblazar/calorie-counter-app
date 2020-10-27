@@ -7,16 +7,19 @@ import "./index.css";
 import { App } from "./App";
 import { GlobalStyle, theme } from "./styles";
 import * as serviceWorker from "./serviceWorker";
+import { AppProvider } from "./newStore";
 
 if (process.env.NODE_ENV === "production")
   axios.defaults.baseURL = "https://caloric-bk.herokuapp.com";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

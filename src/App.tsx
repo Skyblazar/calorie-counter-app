@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { HomePage, CountPage } from "./components/pages";
-
+import {Context} from './newStore'
 export const App = () => {
+  
   return (
     <Router>
       <Switch>
