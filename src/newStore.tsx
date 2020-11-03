@@ -8,6 +8,7 @@ interface AppState {
   totalCalories: number;
   addFood: (food: IFood, quantity: number) => void;
   removeFood: (food: IFood) => void;
+  isLoggedin:boolean
 }
 
 
@@ -16,6 +17,7 @@ const iState = {
   totalCalories: 0,
   addFood: () => {},
   removeFood: () => { },
+  isLoggedin:false
 }
 
 export const Context = createContext<AppState>(iState);
@@ -24,6 +26,7 @@ export const Context = createContext<AppState>(iState);
 export const AppProvider: React.FC = ({ children }) => {
 
   const [totalCalories,settotalCalories] = useState(0)
+  const [isLoggedin,settotalisLoggedin] = useState(false)
   const [addedFoods, setaddedFoods] = useState<IFood[]>([])
   
   const addFood=(food:IFood, quantity:number)=> {
@@ -36,6 +39,7 @@ export const AppProvider: React.FC = ({ children }) => {
     setaddedFoods([...foods, food])
   }
 
+  
   const removeFood = (food:IFood) => {
     food.added = false;
     const calories: number = totalCalories;
@@ -48,15 +52,17 @@ export const AppProvider: React.FC = ({ children }) => {
 
  
 
+  
+  
   const store = {
     addFood,
     totalCalories,
     addedFoods,
     removeFood,
+    isLoggedin,
+    settotalisLoggedin
   }
-
-
-
+  
   return (
     <Context.Provider
       value={store}

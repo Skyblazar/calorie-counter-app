@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router} from 'react-router-dom'
 
 import "./index.css";
 import { App } from "./App";
@@ -14,12 +15,14 @@ if (process.env.NODE_ENV === "production")
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </AppProvider>
+    <Router>
+      <AppProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </AppProvider>
+   </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
