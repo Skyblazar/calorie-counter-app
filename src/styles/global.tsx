@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Nunito', sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
-      /* min-height: 100vh; */
+      height: 100vh;
       background-color: #EAF1ED;
   }
 

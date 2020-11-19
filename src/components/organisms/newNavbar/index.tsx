@@ -5,13 +5,17 @@ import bg from "../../../img/navBg.svg"
 import { NavLink, Navmessage } from '../../atoms';
 import { Context } from '../../../newStore';
 
+
+interface NavContain {
+  width: number,
+}
+
 export const NavContainer = styled.div `
   display: flex;
   position: fixed;
   justify-content: space-between;
   flex-direction:column;
-  min-width: 300px;
-  width: 25%;
+  width: ${({width}:NavContain)=>width>1100? "25%": "300px"};
   background-color: #5FB784;
   background-image: url(${bg}) ;
   background-repeat: no-repeat;
@@ -66,11 +70,10 @@ const Footercontent = styled.h4`
 
 export const NavBar = () => {
 
-  const {isLoggedin} = useContext(Context)
-
+  const {isLoggedin,width} = useContext(Context)
   return (
     <>
-      <NavContainer>
+      <NavContainer width={width}>
         <Navcontent>
           <Logo src={img}></Logo>
           <Navmessage lead="Get" message="Healthy Eat Healthy" />
