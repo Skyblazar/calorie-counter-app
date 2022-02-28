@@ -1,15 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useContext } from "react";
+import { Loggedin, Loggedout } from "./components/Compound";
+import { Context } from './newStore'
 
-import { HomePage, CountPage } from "./components/pages";
+
 
 export const App = () => {
+
+  const { isLoggedin } = useContext(Context)
+  
   return (
-    <Router>
-      <Switch>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/count" component={CountPage} />
-      </Switch>
-    </Router>
-  );
+    isLoggedin ? <Loggedin/> : <Loggedout/>   
+  )
 };
